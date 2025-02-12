@@ -17,3 +17,4 @@ import random
     # The smallest number possible was 2.5 and the largest number possible was 5.5
 
 # Write code, not a comment, to produce a random number between 1 and 100 inclusive.
+print(random.randint(1, 100))
