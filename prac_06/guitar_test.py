@@ -1,3 +1,9 @@
+"""
+Guitars!
+Estimate: 50 minutes
+Actual:  minutes
+"""
+
 from prac_06.guitar import Guitar
 
 guitar_old = Guitar("Ol-reliable", 1925, 5000)
