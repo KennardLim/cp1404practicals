@@ -1,7 +1,7 @@
 """
 Intermediate Exercises
 Estimate: 30 minutes
-Actual: 17 minutes
+Actual: 18 minutes
 """
 
 from prac_06.programming_language import ProgrammingLanguage
