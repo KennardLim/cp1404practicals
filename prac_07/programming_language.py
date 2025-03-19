@@ -8,7 +8,14 @@ class ProgrammingLanguage:
     """Represent information about a programming language."""
 
     def __init__(self, name, typing, reflection, year, pointer_arithmetic):
-        """Construct a ProgrammingLanguage from the given values."""
+        """Construct a ProgrammingLanguage from the given values.
+
+        name: string, name of the programming language
+        typing: string, type of the programming language which is either Static or Dynamic
+        reflection: boolean, is the programming language reflective or not
+        year: int, the year the programming language was created
+        pointer_arithmetic: boolean, does the programming language support pointer arithmetic or not
+        """
         self.name = name
         self.typing = typing
         self.reflection = reflection
