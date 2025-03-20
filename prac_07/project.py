@@ -1,6 +1,10 @@
-from datetime import date
-from operator import itemgetter, attrgetter
+"""
+Project Management Program
+Estimate: 2 hour 30 minutes
+Actual:
+"""
 
+from datetime import date
 
 class Project:
 
