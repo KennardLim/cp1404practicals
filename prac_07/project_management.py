@@ -3,13 +3,50 @@ Project Management Program
 Estimate: 2 hour 30 minutes
 Actual:
 """
-
 from project import Project
 from operator import attrgetter
 import datetime
 
+MENU = ("- (L)oad projects\n"
+        "- (S)ave projects\n"
+        "- (D)isplay projects\n"  
+        "- (F)ilter projects by date\n"
+        "- (A)dd new project\n" 
+        "- (U)pdate project\n"
+        "- (Q)uit")
+
 def main():
     """"""
+    print("Welcome to Pythonic Project Management")
+    projects = load_projects_from_file("projects.txt")
+    print(f"Loaded {len(projects)} projects from projects.txt")
+    print(MENU)
+    choice = input(">>> ").capitalize()
+    while choice != "Q":
+        if choice == "L":
+            filename = input("Filename to load projects from: ")
+            projects = load_projects_from_file(filename)
+        elif choice == "S":
+            filename = input("Filename to save projects to: ")
+            save_project_to_file(filename, projects)
+        elif choice == "D":
+            display_projects_by_completion(projects)
+        elif choice == "F":
+            filter_date_string = input("Show projects that start after date (dd/mm/yy): ")
+            filter_date = datetime.datetime.strptime(filter_date_string, "%d/%m/%Y").date()
+            display_projects_after_date(projects, filter_date)
+        elif choice == "A":
+            projects.append(get_new_project())
+        elif choice == "U":
+            display_projects_with_index()
+            project_number = int(input("Project choice: "))
+            completion_percentage = int(input("New Percentage: "))
+            priority = int(input("New Priority: "))
+            update_project(projects, project_number, completion_percentage, priority)
+        else:
+            print("Invalid choice")
+        print(MENU)
+        choice = input(">>> ").capitalize()
 
 def load_projects_from_file(filename):
     """"""
