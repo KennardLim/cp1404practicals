@@ -2,7 +2,7 @@ from kivy.app import App
 from kivy.lang import Builder
 
 KM_PER_MILE = 1.60934
-DEFAULT_VALUE = 0.0
+DEFAULT_VALUE = 0
 
 class ConvertMilesToKilometresApp(App):
     def build(self):
@@ -11,12 +11,22 @@ class ConvertMilesToKilometresApp(App):
         self.root = Builder.load_file("convert_miles_km.kv")
         return self.root
 
-    def handle_calculate(self, kilometre):
-        """"""
-        self.root.ids.output_label.text = str(float(kilometre) * KM_PER_MILE)
+    def handle_calculate(self):
+        """Handle calculation (could be button press or other call), output result to label widget"""
+        self.root.ids.output_label.text = str(self.get_valid_input() * KM_PER_MILE)
 
     def handle_increment(self, change):
-        """"""
-        self.root.ids.input_number.text = str(float(self.root.ids.input_number.text) + change)
+        """Handle up/down button, updates the text input with the changed value
+        change: the amount the text input is changed"""
+        self.root.ids.input_number.text = str(self.get_valid_input() + change)
+
+    def get_valid_input(self):
+        """get a valid input from the text input and return it as a float,
+        if it isn't a float, return 0"""
+        try:
+            value = float(self.root.ids.input_number.text)
+            return value
+        except ValueError:
+            return DEFAULT_VALUE
 
 ConvertMilesToKilometresApp().run()
