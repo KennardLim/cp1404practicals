@@ -7,6 +7,8 @@ TAXIS = [Taxi("Prius", 100), SilverServiceTaxi("Limo", 100, 2), SilverServiceTax
 MENU = "q)uit, c)hoose taxi, d)rive"
 
 def main():
+    """Simulates a taxi service, you can choose a taxi and drive it your chosen distance,
+    the fare will be added to your total bill each time you drive a taxi."""
     current_taxi = None
     total_bill = 0.0
     print("Let's drive!")
@@ -28,10 +30,12 @@ def main():
     display_taxis(TAXIS)
 
 def display_taxis(taxis):
+    """Display all the available taxis alongside their index number."""
     for i, taxi in enumerate(taxis):
         print(f"{i} - {taxi}")
 
 def choose_taxi(taxis):
+    """Gets the taxi based on its index number."""
     taxi_choice = int(input("Choose taxi: "))
     try:
         return taxis[taxi_choice]
@@ -39,6 +43,7 @@ def choose_taxi(taxis):
         print("Invalid taxi choice")
 
 def drive_taxi(taxi):
+    """Drive a taxi a chosen distance and gives you back the fare."""
     try:
         taxi.start_fare()
         drive_distance = int(input("Drive how far? "))

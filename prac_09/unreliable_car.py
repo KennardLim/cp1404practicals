@@ -2,6 +2,7 @@ from prac_09.car import Car
 from random import randint
 
 class UnreliableCar(Car):
+    """A specialized version of a car that has a chance of not driving when driven."""
 
     def __init__(self, name="", fuel=0, reliability=0):
         """Initialise a UnreliableCar instance, based on parent class Car."""
